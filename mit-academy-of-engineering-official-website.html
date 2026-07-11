@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>MIT Academy of Engineering — Pune</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy: #0a2342; --gold: #c8972b; --blue: #1a4f8a;
+  --light-blue: #e8f0fb; --accent: #3b82d4;
+  --text: #1f2328; --muted: #57606a; --border: #e5e7eb;
+  --bg: #ffffff; --surface: #f7f8fa;
+}
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system,"Segoe UI",system-ui,sans-serif; color: var(--text); background: var(--bg); font-size: 15px; line-height: 1.6; }
+
+/* NAV */
+nav { position: sticky; top: 0; z-index: 900; background: var(--navy); display: flex; align-items: center; justify-content: space-between; padding: 0 32px; height: 64px; border-bottom: 3px solid var(--gold); }
+.nav-brand { display: flex; align-items: center; gap: 12px; }
+.nav-logo { width: 44px; height: 44px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 16px; color: var(--navy); flex-shrink: 0; }
+.nav-title { font-size: 16px; font-weight: 700; line-height: 1.2; color: #fff; }
+.nav-title span { display: block; font-size: 11px; font-weight: 400; color: #b0bec5; }
+.nav-links { display: flex; gap: 4px; }
+.nav-links a { color: #cfd8e3; text-decoration: none; font-size: 13px; font-weight: 500; padding: 6px 12px; border-radius: 4px; }
+.nav-links a:hover { background: rgba(255,255,255,0.1); color: #fff; }
+.nav-cta { background: var(--gold) !important; color: var(--navy) !important; font-weight: 700 !important; padding: 7px 16px !important; border-radius: 4px; }
+
+/* HERO */
+.hero { background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 60%, #1e6091 100%); color: #fff; padding: 80px 32px; text-align: center; }
+.hero-badge { display: inline-block; background: var(--gold); color: var(--navy); font-size: 11px; font-weight: 700; padding: 4px 14px; border-radius: 20px; letter-spacing: .8px; text-transform: uppercase; margin-bottom: 20px; }
+.hero h1 { font-size: clamp(28px,5vw,52px); font-weight: 900; line-height: 1.15; margin-bottom: 16px; }
+.hero h1 span { color: var(--gold); }
+.hero p { font-size: 17px; color: #b0c8e8; max-width: 580px; margin: 0 auto 32px; }
+.hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.btn-gold { background: var(--gold); color: var(--navy); font-weight: 700; padding: 12px 28px; border-radius: 6px; text-decoration: none; font-size: 14px; border: none; cursor: pointer; }
+.btn-ghost { background: transparent; color: #fff; font-weight: 600; padding: 12px 28px; border-radius: 6px; text-decoration: none; font-size: 14px; border: 2px solid rgba(255,255,255,0.4); cursor: pointer; }
+.hero-stats { display: flex; gap: 40px; justify-content: center; margin-top: 56px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.12); flex-wrap: wrap; }
+.stat-num { font-size: 32px; font-weight: 900; color: var(--gold); }
+.stat-label { font-size: 12px; color: #8aafd4; text-transform: uppercase; }
+
+/* SECTIONS */
+section { padding: 72px 32px; }
+.section-inner { max-width: 1080px; margin: 0 auto; }
+.section-header { text-align: center; margin-bottom: 48px; }
+.section-tag { display: inline-block; color: var(--accent); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+.section-header h2 { font-size: clamp(22px,3vw,34px); font-weight: 800; color: var(--navy); margin-bottom: 12px; }
+.section-header p { color: var(--muted); max-width: 560px; margin: 0 auto; }
+.divider { width: 48px; height: 4px; background: var(--gold); border-radius: 2px; margin: 12px auto 0; }
+
+/* ABOUT */
+#about { background: var(--surface); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.about-img { border-radius: 12px; overflow: hidden; background: var(--navy); height: 320px; }
+.about-text h3 { font-size: 22px; font-weight: 800; color: var(--navy); margin-bottom: 12px; }
+.about-text p { color: var(--muted); margin-bottom: 16px; }
+.hi-list { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
+.hi-item { display: flex; gap: 12px; align-items: flex-start; }
+.hi-icon { width: 32px; height: 32px; border-radius: 8px; background: var(--light-blue); color: var(--accent); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; flex-shrink: 0; }
+.hi-item strong { display: block; font-size: 14px; color: var(--navy); }
+.hi-item span { font-size: 13px; color: var(--muted); }
+
+/* PROGRAMS */
+.prog-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 20px; }
+.prog-card { border: 1px solid var(--border); border-radius: 10px; padding: 24px 20px; background: var(--bg); }
+.prog-card:hover { border-color: var(--accent); }
+.prog-icon { width: 48px; height: 48px; border-radius: 10px; background: var(--light-blue); display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+.prog-icon svg { width: 24px; height: 24px; fill: var(--accent); }
+.prog-card h4 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+.prog-card p { font-size: 13px; color: var(--muted); }
+.prog-tag { display: inline-block; margin-top: 12px; font-size: 11px; font-weight: 600; background: var(--light-blue); color: var(--accent); padding: 3px 10px; border-radius: 20px; }
+
+/* ADMISSIONS */
+#admissions { background: var(--surface); }
+.steps-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap: 20px; margin-bottom: 40px; }
+.step-card { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 24px 20px; text-align: center; }
+.step-num { width: 40px; height: 40px; border-radius: 50%; background: var(--navy); color: #fff; font-weight: 800; font-size: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; }
+.step-card h4 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+.step-card p { font-size: 13px; color: var(--muted); }
+.dates-table { width: 100%; border-collapse: collapse; background: var(--bg); border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
+.dates-table th { background: var(--navy); color: #fff; padding: 12px 16px; text-align: left; font-size: 13px; }
+.dates-table td { padding: 11px 16px; font-size: 13px; border-bottom: 1px solid var(--border); color: var(--muted); }
+.dates-table tr:last-child td { border-bottom: none; }
+.dates-table td:first-child { font-weight: 600; color: var(--text); }
+.badge-open { background: #dcfce7; color: #15803d; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 20px; }
+.badge-soon { background: #fef3c7; color: #b45309; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 20px; }
+
+/* FACULTY */
+.faculty-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 20px; }
+.fac-card { border: 1px solid var(--border); border-radius: 10px; padding: 24px 16px; text-align: center; background: var(--bg); }
+.fac-av { width: 72px; height: 72px; border-radius: 50%; margin: 0 auto 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 800; color: #fff; }
+.fac-card h4 { font-size: 14px; font-weight: 700; color: var(--navy); }
+.fac-dept { font-size: 12px; color: var(--accent); font-weight: 600; margin: 4px 0; }
+.fac-qual { font-size: 12px; color: var(--muted); }
+
+/* CAMPUS */
+#campus { background: var(--navy); }
+#campus .section-header h2 { color: #fff; }
+#campus .section-header p { color: #8aafd4; }
+.campus-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 20px; }
+.campus-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 24px 20px; }
+.campus-icon { width: 44px; height: 44px; background: rgba(200,151,43,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: var(--gold); margin-bottom: 12px; }
+.campus-card h4 { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+.campus-card p { font-size: 13px; color: #8aafd4; }
+
+/* CONTACT */
+#contact { background: var(--surface); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+.contact-info h3 { font-size: 20px; font-weight: 800; color: var(--navy); margin-bottom: 20px; }
+.c-item { display: flex; gap: 12px; margin-bottom: 18px; }
+.c-icon { width: 36px; height: 36px; border-radius: 8px; background: var(--light-blue); color: var(--accent); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; flex-shrink: 0; }
+.c-icon + div strong { display: block; font-size: 13px; color: var(--navy); }
+.c-icon + div span { font-size: 13px; color: var(--muted); }
+.form-box { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 28px; }
+.form-box h3 { font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 20px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.fg { margin-bottom: 12px; }
+.fg label { display: block; font-size: 12px; font-weight: 600; color: var(--text); margin-bottom: 5px; }
+.fg input, .fg select, .fg textarea { width: 100%; padding: 9px 12px; border: 1px solid var(--border); border-radius: 6px; font-size: 13px; font-family: inherit; color: var(--text); background: var(--surface); outline: none; }
+.fg textarea { height: 80px; resize: vertical; }
+.btn-submit { width: 100%; background: var(--navy); color: #fff; font-weight: 700; padding: 11px; border-radius: 6px; border: none; cursor: pointer; font-size: 14px; font-family: inherit; }
+
+/* FOOTER */
+footer { background: #061629; color: #8aafd4; padding: 48px 32px 24px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; max-width: 1080px; margin: 0 auto 32px; }
+.footer-brand p { font-size: 13px; color: #546e8a; }
+.footer-col h5 { font-size: 12px; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: .8px; margin-bottom: 14px; }
+.footer-col a { display: block; color: #546e8a; text-decoration: none; font-size: 13px; margin-bottom: 8px; }
+.footer-col a:hover { color: var(--gold); }
+.footer-bottom { max-width: 1080px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 20px; display: flex; justify-content: space-between; font-size: 12px; color: #3d5770; }
+
+/* ═══════════════════════════════════════
+   CHATBOT — fixed & working
+═══════════════════════════════════════ */
+#chatBtn {
+  position: fixed; bottom: 28px; right: 28px; z-index: 9999;
+  width: 62px; height: 62px; border-radius: 50%;
+  background: var(--navy); border: 3px solid var(--gold);
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 24px rgba(10,35,66,0.4);
+  transition: transform 0.2s;
+}
+#chatBtn:hover { transform: scale(1.08); }
+#chatBtn svg { width: 28px; height: 28px; fill: #fff; pointer-events: none; }
+#chatDot {
+  position: absolute; top: -3px; right: -3px;
+  width: 20px; height: 20px; border-radius: 50%;
+  background: #4ade80; border: 2px solid #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 8px; font-weight: 800; color: #14532d;
+}
+
+#chatBox {
+  position: fixed; bottom: 102px; right: 28px; z-index: 9999;
+  width: 380px;
+  background: #fff; border: 1px solid var(--border); border-radius: 16px;
+  box-shadow: 0 8px 40px rgba(10,35,66,0.25);
+  display: none;                /* hidden by default — JS toggles this */
+  flex-direction: column;
+  overflow: hidden;
+  max-height: 580px;
+}
+#chatBox.show { display: flex; }
+
+.cb-header {
+  background: var(--navy); padding: 14px 16px;
+  display: flex; align-items: center; gap: 10px;
+  border-bottom: 3px solid var(--gold); flex-shrink: 0;
+}
+.cb-avatar {
+  width: 38px; height: 38px; border-radius: 50%;
+  background: var(--gold); display: flex; align-items: center;
+  justify-content: center; font-weight: 900; font-size: 13px; color: var(--navy); flex-shrink: 0;
+}
+.cb-info { flex: 1; }
+.cb-info strong { display: block; font-size: 14px; color: #fff; }
+.cb-info span { font-size: 11px; color: #8aafd4; }
+.cb-close {
+  background: none; border: none; color: #8aafd4;
+  font-size: 20px; cursor: pointer; line-height: 1; padding: 0 4px;
+}
+.cb-close:hover { color: #fff; }
+
+
+.cb-msgs {
+  flex: 1; overflow-y: auto; padding: 16px;
+  display: flex; flex-direction: column; gap: 12px;
+  min-height: 200px; max-height: 340px;
+}
+.msg { display: flex; gap: 8px; max-width: 88%; }
+.msg.user { flex-direction: row-reverse; align-self: flex-end; }
+.msg-av {
+  width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 700;
+}
+.msg.bot  .msg-av { background: var(--gold); color: var(--navy); }
+.msg.user .msg-av { background: var(--accent); color: #fff; }
+.msg-bub { padding: 9px 13px; border-radius: 12px; font-size: 13px; line-height: 1.55; }
+.msg.bot  .msg-bub { background: var(--light-blue); color: var(--text); border-bottom-left-radius: 3px; }
+.msg.user .msg-bub { background: var(--navy); color: #fff; border-bottom-right-radius: 3px; }
+
+.typing { display: inline-flex; gap: 4px; align-items: center; padding: 9px 13px; background: var(--light-blue); border-radius: 12px; border-bottom-left-radius: 3px; }
+.typing span { width: 7px; height: 7px; background: var(--accent); border-radius: 50%; animation: bop 1.2s infinite; }
+.typing span:nth-child(2) { animation-delay: .2s; }
+.typing span:nth-child(3) { animation-delay: .4s; }
+@keyframes bop { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-6px)} }
+
+.cb-quick { padding: 6px 14px 10px; display: flex; gap: 6px; flex-wrap: wrap; flex-shrink: 0; }
+.qbtn {
+  background: var(--light-blue); border: 1px solid #c3d9f7; color: var(--accent);
+  border-radius: 20px; padding: 5px 12px; font-size: 12px; cursor: pointer;
+  font-family: inherit; font-weight: 600; white-space: nowrap;
+}
+.qbtn:hover { background: #d0e5ff; }
+
+.cb-input-row {
+  display: flex; gap: 8px; padding: 10px 12px;
+  border-top: 1px solid var(--border); flex-shrink: 0;
+}
+.cb-input {
+  flex: 1; border: 1px solid var(--border); border-radius: 8px;
+  padding: 9px 12px; font-size: 13px; font-family: inherit;
+  color: var(--text); background: var(--surface); outline: none;
+}
+.cb-input:focus { border-color: var(--accent); }
+.cb-send {
+  width: 38px; height: 38px; border-radius: 8px;
+  background: var(--navy); border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.cb-send:hover { background: var(--blue); }
+.cb-send svg { width: 16px; height: 16px; fill: #fff; }
+
+@media (max-width: 768px) {
+  nav { padding: 0 16px; } .nav-links { display: none; }
+  .hero { padding: 52px 20px; } .hero-stats { gap: 20px; }
+  section { padding: 48px 20px; }
+  .about-grid, .contact-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  #chatBox { width: calc(100vw - 32px); right: 16px; }
+  #chatBtn { right: 16px; bottom: 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">MIT</div>
+    <div class="nav-title">MIT Academy of Engineering <span>Pune, Maharashtra — AICTE Approved | NBA Accredited</span></div>
+  </div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#programs">Programs</a>
+    <a href="#admissions">Admissions</a>
+    <a href="#faculty">Faculty</a>
+    <a href="#campus">Campus</a>
+    <a href="#contact">Contact</a>
+    <a href="#admissions" class="nav-cta">Apply Now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">Ranked #1 Engineering College in Pune</div>
+  <h1>Shape the Future with<br><span>World-Class Engineering</span></h1>
+  <p>MIT Academy of Engineering blends rigorous academics with real-world innovation, industry partnerships, and research excellence.</p>
+  <div class="hero-actions">
+    <a href="#admissions" class="btn-gold">Apply for 2025–26</a>
+    <a href="#programs" class="btn-ghost">Explore Programs</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">8,500+</div><div class="stat-label">Students</div></div>
+    <div class="stat"><div class="stat-num">450+</div><div class="stat-label">Expert Faculty</div></div>
+    <div class="stat"><div class="stat-num">96%</div><div class="stat-label">Placement Rate</div></div>
+    <div class="stat"><div class="stat-num">300+</div><div class="stat-label">Industry Partners</div></div>
+    <div class="stat"><div class="stat-num">25+</div><div class="stat-label">Years of Excellence</div></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-img">
+        <svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+          <rect width="400" height="280" fill="#0a2342"/>
+          <rect x="0" y="220" width="400" height="60" fill="#0d2d52"/>
+          <rect x="80" y="90" width="240" height="130" fill="#1a4f8a"/>
+          <rect x="80" y="70" width="240" height="24" fill="#1e5a9e"/>
+          <rect x="100" y="130" width="12" height="90" fill="#0f3a6e"/><rect x="130" y="130" width="12" height="90" fill="#0f3a6e"/><rect x="160" y="130" width="12" height="90" fill="#0f3a6e"/>
+          <rect x="258" y="130" width="12" height="90" fill="#0f3a6e"/><rect x="288" y="130" width="12" height="90" fill="#0f3a6e"/><rect x="318" y="130" width="12" height="90" fill="#0f3a6e"/>
+          <rect x="95" y="95" width="30" height="22" fill="#2d7fd3" rx="2"/><rect x="140" y="95" width="30" height="22" fill="#2d7fd3" rx="2"/>
+          <rect x="185" y="95" width="30" height="22" fill="#2d7fd3" rx="2"/><rect x="230" y="95" width="30" height="22" fill="#c8972b" rx="2"/>
+          <rect x="275" y="95" width="30" height="22" fill="#2d7fd3" rx="2"/><rect x="320" y="95" width="30" height="22" fill="#2d7fd3" rx="2"/>
+          <rect x="185" y="180" width="30" height="40" fill="#c8972b" rx="2"/>
+          <rect x="196" y="30" width="3" height="40" fill="#c8972b"/><polygon points="199,30 220,38 199,46" fill="#c8972b"/>
+          <circle cx="50" cy="190" r="22" fill="#0d5c2a"/><rect x="47" y="210" width="6" height="15" fill="#5c3a1e"/>
+          <circle cx="350" cy="195" r="18" fill="#0d5c2a"/><rect x="347" y="210" width="6" height="12" fill="#5c3a1e"/>
+          <text x="200" y="258" text-anchor="middle" fill="#8aafd4" font-size="11" font-family="sans-serif">MIT Academy of Engineering — Pune Campus</text>
+        </svg>
+      </div>
+      <div class="about-text">
+        <h3>A Legacy of Excellence in Technical Education</h3>
+        <p>Established in 1999, MIT Academy of Engineering (MITAOE) is one of Maharashtra's premier engineering institutions, approved by AICTE and affiliated with Savitribai Phule Pune University.</p>
+        <p>Our vision is to produce globally competent engineers who are ethical, innovative, and ready to solve real-world problems.</p>
+        <div class="hi-list">
+          <div class="hi-item"><div class="hi-icon">A</div><div><strong>AICTE &amp; NBA Accredited</strong><span>Recognized by top regulatory &amp; accreditation bodies</span></div></div>
+          <div class="hi-item"><div class="hi-icon">R</div><div><strong>Research &amp; Innovation Hub</strong><span>25+ active research labs and incubation centers</span></div></div>
+          <div class="hi-item"><div class="hi-icon">I</div><div><strong>Industry Partnerships</strong><span>MoUs with Google, IBM, TCS, Infosys &amp; 300+ companies</span></div></div>
+          <div class="hi-item"><div class="hi-icon">P</div><div><strong>Placement Excellence</strong><span>Avg. ₹6.8 LPA · Highest ₹42 LPA (2024 batch)</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section id="programs">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Academic Programs</div>
+      <h2>Engineering Programs We Offer</h2>
+      <p>Undergraduate, postgraduate, and doctoral programs across engineering &amp; technology.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="prog-grid">
+      <div class="prog-card"><div class="prog-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm-8 11l-5-5 1.4-1.4L12 12.2l7.6-7.6L21 6l-9 9z"/></svg></div><h4>Computer Engineering</h4><p>AI, ML, Data Science, Cloud &amp; Software Engineering</p><span class="prog-tag">B.E. / M.E. / Ph.D</span></div>
+      <div class="prog-card"><div class="prog-icon"><svg viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div><h4>Electrical Engineering</h4><p>Power Systems, Control, Renewable Energy &amp; Smart Grids</p><span class="prog-tag">B.E. / M.E.</span></div>
+      <div class="prog-card"><div class="prog-icon"><svg viewBox="0 0 24 24"><path d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg></div><h4>Electronics &amp; Telecom</h4><p>VLSI, Embedded Systems, IoT, 5G &amp; Signal Processing</p><span class="prog-tag">B.E. / M.E.</span></div>
+      <div class="prog-card"><div class="prog-icon"><svg viewBox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg></div><h4>Civil Engineering</h4><p>Structural Design, Urban Planning, Environmental Engg.</p><span class="prog-tag">B.E. / M.E.</span></div>
+      <div class="prog-card"><div class="prog-icon"><svg viewBox="0 0 24 24"><path d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2zm0 0V5a2 2 0 012-2h6l2 2h6a2 2 0 012 2v2H3z"/></svg></div><h4>Information Technology</h4><p>Cybersecurity, Blockchain, Web Dev &amp; Databases</p><span class="prog-tag">B.E. / M.E.</span></div>
+      <div class="prog-card"><div class="prog-icon"><svg viewBox="0 0 24 24"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg></div><h4>Artificial Intelligence</h4><p>Deep Learning, NLP, Computer Vision &amp; AI Ethics</p><span class="prog-tag">B.E. / M.Tech</span></div>
+      <div class="prog-card"><div class="prog-icon"><svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg></div><h4>Mechanical Engineering</h4><p>Robotics, Automation, Thermal &amp; Manufacturing</p><span class="prog-tag">B.E. / M.E.</span></div>
+      <div class="prog-card"><div class="prog-icon"><svg viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></div><h4>MBA (Technology)</h4><p>Tech Management, Product Strategy &amp; Digital Innovation</p><span class="prog-tag">MBA / PGDM</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ADMISSIONS -->
+<section id="admissions">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Admissions 2025–26</div>
+      <h2>Your Journey Starts Here</h2>
+      <p>Simple, transparent process. Our AI counsellor is available 24/7.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card"><div class="step-num">1</div><h4>Check Eligibility</h4><p>10+2 PCM with min. 45% aggregate.</p></div>
+      <div class="step-card"><div class="step-num">2</div><h4>MHT-CET / JEE</h4><p>Valid entrance exam score required.</p></div>
+      <div class="step-card"><div class="step-num">3</div><h4>Fill Application</h4><p>Register on DTE Maharashtra CAP portal.</p></div>
+      <div class="step-card"><div class="step-num">4</div><h4>Documents</h4><p>Submit marksheets, caste certificate &amp; domicile.</p></div>
+      <div class="step-card"><div class="step-num">5</div><h4>Join College</h4><p>Accept allotment &amp; report with originals.</p></div>
+    </div>
+    <table class="dates-table">
+      <thead><tr><th>Event</th><th>Date</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>MHT-CET 2025 (PCM)</td><td>Apr 19 – May 9, 2025</td><td><span class="badge-open">Open</span></td></tr>
+        <tr><td>Application Portal Opens</td><td>June 1, 2025</td><td><span class="badge-soon">Upcoming</span></td></tr>
+        <tr><td>CAP Round 1 Allotment</td><td>July 15, 2025</td><td><span class="badge-soon">Upcoming</span></td></tr>
+        <tr><td>CAP Round 2 Allotment</td><td>July 28, 2025</td><td><span class="badge-soon">Upcoming</span></td></tr>
+        <tr><td>Classes Commence</td><td>August 4, 2025</td><td><span class="badge-soon">Upcoming</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- FACULTY -->
+<section id="faculty">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Our Team</div>
+      <h2>Distinguished Faculty</h2>
+      <p>PhDs from IITs, NITs &amp; international universities with decades of research experience.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="faculty-grid">
+      <div class="fac-card"><div class="fac-av" style="background:#1a4f8a">DR</div><h4>Dr. Rajesh Kumar</h4><div class="fac-dept">Computer Engineering</div><div class="fac-qual">Ph.D IIT Bombay · 22 yrs</div></div>
+      <div class="fac-card"><div class="fac-av" style="background:#7c5cd8">PS</div><h4>Prof. Sunita Patil</h4><div class="fac-dept">Artificial Intelligence</div><div class="fac-qual">Ph.D COEP · 18 yrs</div></div>
+      <div class="fac-card"><div class="fac-av" style="background:#0d6e3e">AM</div><h4>Dr. Anand Mehta</h4><div class="fac-dept">Mechanical Engineering</div><div class="fac-qual">Ph.D IIT Pune · 20 yrs</div></div>
+      <div class="fac-card"><div class="fac-av" style="background:#c8972b">PD</div><h4>Prof. Priya Desai</h4><div class="fac-dept">Electronics &amp; Telecom</div><div class="fac-qual">M.Tech VIT · 15 yrs</div></div>
+      <div class="fac-card"><div class="fac-av" style="background:#b91c1c">VS</div><h4>Dr. Vikram Sharma</h4><div class="fac-dept">Civil Engineering</div><div class="fac-qual">Ph.D NIT Warangal · 24 yrs</div></div>
+      <div class="fac-card"><div class="fac-av" style="background:#0e7490">NK</div><h4>Prof. Neha Kulkarni</h4><div class="fac-dept">Information Technology</div><div class="fac-qual">M.Tech IIT Roorkee · 12 yrs</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CAMPUS -->
+<section id="campus">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Life at MITAOE</div>
+      <h2>World-Class Campus Facilities</h2>
+      <p>A thriving ecosystem designed to nurture minds, bodies, and careers.</p>
+      <div class="divider" style="background:#c8972b"></div>
+    </div>
+    <div class="campus-grid">
+      <div class="campus-card"><div class="campus-icon">Lab</div><h4>Advanced Laboratories</h4><p>AI, Robotics, IoT, VLSI and Materials Science research labs.</p></div>
+      <div class="campus-card"><div class="campus-icon">Lib</div><h4>Digital Library</h4><p>80,000+ books, IEEE/Elsevier access, NPTEL &amp; 24/7 reading rooms.</p></div>
+      <div class="campus-card"><div class="campus-icon">Spt</div><h4>Sports Complex</h4><p>Cricket, football, indoor courts, swimming pool &amp; gym.</p></div>
+      <div class="campus-card"><div class="campus-icon">Hst</div><h4>Student Hostels</h4><p>Separate boys &amp; girls hostels with Wi-Fi, mess &amp; CCTV.</p></div>
+      <div class="campus-card"><div class="campus-icon">Inc</div><h4>Innovation Hub</h4><p>MIT-iCreate incubation centre — 50+ startups supported.</p></div>
+      <div class="campus-card"><div class="campus-icon">Plc</div><h4>Placement Cell</h4><p>Mock interviews, aptitude training &amp; 300+ company drives.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Get in Touch</div>
+      <h2>Contact &amp; Enquiry</h2>
+      <p>Our team and AI counsellor are available for admissions, courses &amp; campus queries.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>MIT Academy of Engineering</h3>
+        <div class="c-item"><div class="c-icon">@</div><div><strong>Address</strong><span>Alandi Road, Dehu Road, Pune – 412 105, Maharashtra</span></div></div>
+        <div class="c-item"><div class="c-icon">T</div><div><strong>Phone</strong><span>+91 (020) 2748 0707</span></div></div>
+        <div class="c-item"><div class="c-icon">E</div><div><strong>Email</strong><span>admissions@mitaoe.ac.in</span></div></div>
+        <div class="c-item"><div class="c-icon">H</div><div><strong>Office Hours</strong><span>Mon – Sat: 9:00 AM – 5:30 PM</span></div></div>
+        <div style="margin-top:24px;padding:18px;background:var(--light-blue);border-radius:10px;border:1px solid #c3d9f7">
+          <strong style="color:var(--navy);font-size:14px">AI Counsellor — Available 24/7</strong>
+          <p style="font-size:13px;color:var(--muted);margin-top:6px">Click the chat button (bottom-right) to speak with our watsonx Orchestrate admission agent.</p>
+        </div>
+      </div>
+      <div class="form-box">
+        <h3>Send an Enquiry</h3>
+        <div class="form-row">
+          <div class="fg"><label>First Name</label><input type="text" placeholder="Rahul"/></div>
+          <div class="fg"><label>Last Name</label><input type="text" placeholder="Sharma"/></div>
+        </div>
+        <div class="fg"><label>Email</label><input type="email" placeholder="you@example.com"/></div>
+        <div class="fg"><label>Phone</label><input type="tel" placeholder="+91 98765 43210"/></div>
+        <div class="fg"><label>Program of Interest</label>
+          <select><option>Select a program...</option><option>B.E. Computer Engineering</option><option>B.E. Mechanical Engineering</option><option>B.E. Electrical Engineering</option><option>B.E. Electronics &amp; Telecom</option><option>B.E. Civil Engineering</option><option>B.E. Information Technology</option><option>B.E. Artificial Intelligence</option><option>MBA (Technology)</option></select>
+        </div>
+        <div class="fg"><label>Message</label><textarea placeholder="Your question..."></textarea></div>
+        <button class="btn-submit">Submit Enquiry</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="nav-logo" style="margin-bottom:12px">MIT</div>
+      <p>MIT Academy of Engineering, Pune — Shaping tomorrow's engineers since 1999.</p>
+    </div>
+    <div class="footer-col"><h5>Quick Links</h5><a href="#about">About</a><a href="#programs">Programs</a><a href="#admissions">Admissions</a><a href="#faculty">Faculty</a><a href="#campus">Campus</a><a href="#contact">Contact</a></div>
+    <div class="footer-col"><h5>Programs</h5><a href="#programs">Computer Engg.</a><a href="#programs">Mechanical Engg.</a><a href="#programs">AI &amp; ML</a><a href="#programs">Electronics</a><a href="#programs">Civil Engg.</a><a href="#programs">MBA Technology</a></div>
+    <div class="footer-col"><h5>Resources</h5><a href="#">NAAC Report</a><a href="#">NBA Accreditation</a><a href="#">Fee Structure</a><a href="#">Scholarship Info</a><a href="#">Placement Report</a><a href="#">Anti-Ragging Cell</a></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 MIT Academy of Engineering, Pune. | AICTE Approved | Affiliated to SPPU</span>
+    <span>Powered by watsonx Orchestrate</span>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════
+     CHATBOT WIDGET
+═══════════════════════════════ -->
+<button id="chatBtn" title="Chat with AI Counsellor">
+  <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+  <div id="chatDot">AI</div>
+</button>
+
+<div id="chatBox">
+  <div class="cb-header">
+    <div class="cb-avatar">AI</div>
+    <div class="cb-info">
+      <strong>MITAOE Admission Counsellor</strong>
+      <span>Powered by watsonx Orchestrate · au-syd</span>
+    </div>
+    <button class="cb-close" id="cbClose">&#x2715;</button>
+  </div>
+  <div class="cb-msgs" id="cbMsgs">
+    <div class="msg bot">
+      <div class="msg-av">AI</div>
+      <div class="msg-bub">👋 Hello! I'm your <strong>MITAOE Admission Counsellor</strong> powered by watsonx Orchestrate.<br><br>Ask me about admissions, eligibility, fees, programs, cut-offs, hostel, or placements!</div>
+    </div>
+  </div>
+  <div class="cb-quick" id="cbQuick">
+    <button class="qbtn">Eligibility Criteria</button>
+    <button class="qbtn">Fee Structure</button>
+    <button class="qbtn">Admission Process</button>
+    <button class="qbtn">Cut-off Ranks</button>
+    <button class="qbtn">Hostel Facilities</button>
+    <button class="qbtn">Placement Stats</button>
+  </div>
+  <div class="cb-input-row">
+    <input class="cb-input" id="cbInput" type="text" placeholder="Ask about admissions, fees, courses..."/>
+    <button class="cb-send" id="cbSend">
+      <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+    </button>
+  </div>
+</div>
+
+<p style="text-align:center;font-size:11px;color:#aaa;border-top:1px solid #e5e7eb;padding:14px 0;">Made with IBM Bob</p>
+
+<script>
+// ── Toggle chatbox open/close ──────────────────────────────
+var chatBtn  = document.getElementById('chatBtn');
+var chatBox  = document.getElementById('chatBox');
+var cbClose  = document.getElementById('cbClose');
+var cbInput  = document.getElementById('cbInput');
+var cbSend   = document.getElementById('cbSend');
+var cbMsgs   = document.getElementById('cbMsgs');
+var cbQuick  = document.getElementById('cbQuick');
+
+chatBtn.addEventListener('click', function() {
+  if (chatBox.classList.contains('show')) {
+    chatBox.classList.remove('show');
+  } else {
+    chatBox.classList.add('show');
+    cbInput.focus();
+  }
+});
+
+cbClose.addEventListener('click', function() {
+  chatBox.classList.remove('show');
+});
+
+// ── watsonx proxy config ──────────────────────────────────
+// Auto-detect environment:
+// - On localhost → use local Node.js proxy
+// - On Netlify/any other host → use Netlify serverless function
+var PROXY = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+  ? 'http://localhost:3000/api/chat'
+  : '/.netlify/functions/chat';
+var sessionId = 'mitaoe_' + Math.random().toString(36).substr(2, 10);
+var chatHistory = [];
+
+// ── Smart mock fallback ───────────────────────────────────
+var MOCK = {
+  eligib: "For B.E. at MITAOE:\n• 10+2 with Physics, Chemistry & Maths\n• Min. 45% aggregate (40% SC/ST/OBC)\n• Valid MHT-CET or JEE Main score\n• Maharashtra domicile for CAP seats\n\nNeed details for a specific branch?",
+  fee:    "Fee Structure 2025–26:\n• B.E. (CAP Seats): ₹1,45,000/year\n• B.E. (Institute Level): ₹1,65,000/year\n• M.E.: ₹1,10,000/year\n• MBA: ₹1,80,000/year\n\nScholarships available for EWS, SC/ST & merit students.",
+  admiss: "Admission Steps:\n1. Appear in MHT-CET 2025 (April–May)\n2. Register on DTE Maharashtra portal\n3. Fill CAP application form\n4. Upload & verify documents\n5. Accept seat allotment\n6. Report to college with originals\n\nApplications open June 1, 2025.",
+  cut:    "2024 MHT-CET Cut-offs (approx. percentile):\n• Computer Engineering: 93.5+\n• AI & ML: 91.2+\n• Electronics & Telecom: 88.0+\n• Mechanical Engineering: 82.5+\n• Civil Engineering: 78.0+\n• Information Technology: 89.5+",
+  hostel: "MITAOE Hostels:\n• Separate boys & girls hostels\n• 3–4 sharing rooms with attached bathrooms\n• 24/7 Wi-Fi, mess & CCTV security\n• Annual fee: ₹75,000–₹90,000 (hostel + mess)\n\nApply for hostel at the time of admission.",
+  place:  "Placement Highlights 2024:\n• Placement rate: 96%\n• Average package: ₹6.8 LPA\n• Highest package: ₹42 LPA (Microsoft)\n• 300+ recruiters: TCS, Infosys, Wipro, Amazon, Google\n• Pre-placement offers: 180+ students",
+  def:    "I'm your MITAOE Admission Counsellor! I can help with:\n• Eligibility & admission process\n• Fee structure & scholarships\n• Program details & cut-offs\n• Hostel & campus facilities\n• Placement statistics\n\nWhat would you like to know?"
+};
+
+function getMock(t) {
+  t = t.toLowerCase();
+  if (t.match(/eligib|qualify|require/)) return MOCK.eligib;
+  if (t.match(/fee|cost|tuition|scholar/)) return MOCK.fee;
+  if (t.match(/admiss|apply|process|step|how to/)) return MOCK.admiss;
+  if (t.match(/cut.?off|rank|percentile|score/)) return MOCK.cut;
+  if (t.match(/hostel|accommod|stay|room|mess/)) return MOCK.hostel;
+  if (t.match(/place|job|package|salary|recruit/)) return MOCK.place;
+  return MOCK.def;
+}
+
+// ── Add a message bubble ──────────────────────────────────
+function addMsg(text, role) {
+  var wrap = document.createElement('div');
+  wrap.className = 'msg ' + role;
+  var av = document.createElement('div');
+  av.className = 'msg-av';
+  av.textContent = role === 'bot' ? 'AI' : 'You';
+  var bub = document.createElement('div');
+  bub.className = 'msg-bub';
+  bub.innerHTML = text.replace(/\n/g, '<br>');
+  wrap.appendChild(av);
+  wrap.appendChild(bub);
+  cbMsgs.appendChild(wrap);
+  cbMsgs.scrollTop = cbMsgs.scrollHeight;
+}
+
+function showTyping() {
+  var d = document.createElement('div');
+  d.className = 'msg bot'; d.id = 'typing';
+  d.innerHTML = '<div class="msg-av">AI</div><div class="typing"><span></span><span></span><span></span></div>';
+  cbMsgs.appendChild(d);
+  cbMsgs.scrollTop = cbMsgs.scrollHeight;
+}
+
+function hideTyping() {
+  var el = document.getElementById('typing');
+  if (el) el.parentNode.removeChild(el);
+}
+
+// ── Call watsonx via local proxy ──────────────────────────
+function callAgent(userText, callback) {
+  chatHistory.push({ role: 'user', content: userText });
+  var payload = JSON.stringify({ messages: chatHistory, session_id: sessionId });
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', PROXY, true);
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.timeout = 15000;
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState !== 4) return;
+    if (xhr.status >= 200 && xhr.status < 300) {
+      try {
+        var data = JSON.parse(xhr.responseText);
+        var reply =
+          (data.output && data.output.generic && data.output.generic[0] && data.output.generic[0].text) ||
+          (data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content) ||
+          (data.message && data.message.content) ||
+          (data.result && data.result.output && data.result.output.text) ||
+          data.response || data.text || null;
+        if (reply) {
+          chatHistory.push({ role: 'assistant', content: reply });
+          callback(reply);
+        } else {
+          callback(getMock(userText));
+        }
+      } catch(e) {
+        callback(getMock(userText));
+      }
+    } else {
+      callback(getMock(userText));
+    }
+  };
+  xhr.ontimeout = function() {
+    callback(getMock(userText));
+  };
+  xhr.onerror = function() {
+    callback(getMock(userText));
+  };
+  xhr.send(payload);
+}
+
+// ── Send message ──────────────────────────────────────────
+function send(text) {
+  text = text.trim();
+  if (!text) return;
+  addMsg(text, 'user');
+  cbInput.value = '';
+  cbQuick.style.display = 'none';
+  showTyping();
+  callAgent(text, function(reply) {
+    hideTyping();
+    addMsg(reply, 'bot');
+  });
+}
+
+cbSend.addEventListener('click', function() { send(cbInput.value); });
+cbInput.addEventListener('keydown', function(e) { if (e.key === 'Enter') send(cbInput.value); });
+
+var qbtns = document.querySelectorAll('.qbtn');
+for (var i = 0; i < qbtns.length; i++) {
+  (function(btn) {
+    btn.addEventListener('click', function() { send(btn.textContent); });
+  })(qbtns[i]);
+}
+</script>
+</body>
+</html>
